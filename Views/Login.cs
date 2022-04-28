@@ -24,7 +24,6 @@ namespace ExemploTela
             Application.Run(new Login());
         }
     }
-
 }
 
     public class Login : Form //Tela de Login
