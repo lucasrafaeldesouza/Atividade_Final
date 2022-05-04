@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.IO;
 
-namespace ExemploTela
+namespace ExemploLogin
 {
     static class Program
     {
@@ -83,7 +83,6 @@ namespace ExemploTela
             this.Text = "Login";
             this.StartPosition = FormStartPosition.CenterScreen;
         }
-
 
         private void handleConfirmClick(object sender, EventArgs e)
         {
