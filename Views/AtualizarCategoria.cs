@@ -20,6 +20,7 @@ using Controllers;
         TextBox txtDescricao;
         Button btnConfirm;
         Button btnCancel;
+        ListView listView;
 
         public AtualizarCategoria()
         {
@@ -70,7 +71,7 @@ using Controllers;
         }
         private void handleConfirmClick(object sender, EventArgs e)
         {
-
+           ListViewItem selectedItem = listView.SelectedItems[0];
         }
         private void handleCancelClick(object sender, EventArgs e)
         {
