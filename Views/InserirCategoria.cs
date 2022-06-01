@@ -60,7 +60,6 @@ using Controllers;
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtDescricao);
 
-
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnConfirm);
 
