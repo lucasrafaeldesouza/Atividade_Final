@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;  
+using Controllers;
 
 
   public class AtualizarCategoria : Form //Atualizar Categoria
@@ -19,6 +20,7 @@ using System.IO;
         TextBox txtDescricao;
         Button btnConfirm;
         Button btnCancel;
+        ListView listView;
 
         public AtualizarCategoria()
         {
@@ -68,7 +70,7 @@ using System.IO;
         }
         private void handleConfirmClick(object sender, EventArgs e)
         {
-
+           ListViewItem selectedItem = listView.SelectedItems[0];
         }
         private void handleCancelClick(object sender, EventArgs e)
         {

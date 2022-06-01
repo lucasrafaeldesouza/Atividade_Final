@@ -1,0 +1,8 @@
+Como acessar o Banco do shell
+
+mysql -u root -p
+
+
+use encryptme;
+show tables;
+select * from coluna;

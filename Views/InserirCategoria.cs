@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;  
+using Controllers;
 
 
    public class InserirCategoria : Form 
@@ -68,9 +69,16 @@ using System.IO;
         }
         private void handleConfirmClick(object sender, EventArgs e)
         {
-
+            try 
+            {
+                CategoriaController.IncluirCategoria(this.txtNome.Text, this.txtDescricao.Text);
+                
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
-
         private void handleCancelClick(object sender, EventArgs e)
         {
             this.Close();

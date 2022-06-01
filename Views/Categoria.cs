@@ -79,6 +79,8 @@ using System.IO;
 
         private void handleConfirmClickCategoriaAtualizar(object sender, EventArgs e)
         {
+            //listView.SelectedItems[0].Text
+            //ListViewItem selectedItem = listView.SelectedItems[0];
             AtualizarCategoria menu = new AtualizarCategoria();
             menu.Size = new Size(325, 300);
             menu.ShowDialog();
