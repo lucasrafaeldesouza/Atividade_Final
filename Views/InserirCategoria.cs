@@ -7,11 +7,13 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;  
+using Controllers;
 
 
    public class InserirCategoria : Form 
     {
         private System.ComponentModel.IContainer components = null;
+        Categorias formCategoria;
 
         Label lblNome;
         Label lblDescricao;
@@ -20,8 +22,10 @@ using System.IO;
         Button btnConfirm;
         Button btnCancel;
 
-        public InserirCategoria()
+        public InserirCategoria(Categorias formCategoria)
         {
+            this.formCategoria = formCategoria;
+
             this.lblNome = new Label();
             this.lblNome.Text = "Nome";
             this.lblNome.Location = new Point(10, 20);
@@ -68,7 +72,17 @@ using System.IO;
         }
         private void handleConfirmClick(object sender, EventArgs e)
         {
+            try 
+            {
+                CategoriaController.IncluirCategoria(this.txtNome.Text, this.txtDescricao.Text);
 
+                this.formCategoria.updateList();
+                this.Close();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
 
         private void handleCancelClick(object sender, EventArgs e)

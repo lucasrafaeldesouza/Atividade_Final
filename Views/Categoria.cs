@@ -7,7 +7,9 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;  
-  
+using Controllers;
+using Models;
+
   public class Categorias : Form //Categorias
     {
         private System.ComponentModel.IContainer components = null;
@@ -17,7 +19,6 @@ using System.IO;
         Button btnInsert;
         Button btnDeletar;
         Button btnUpdate;
-
         ListView listView;
         public Categorias()
         {
@@ -31,11 +32,6 @@ using System.IO;
             listView.Location = new Point(50, 70);
             listView.Size = new Size(400, 400);
             listView.View = View.Details;
-            ListViewItem lista1 = new ListViewItem("0");
-            lista1.SubItems.Add("Rafael");
-            lista1.SubItems.Add("000.000.000-00");
-
-            listView.Items.AddRange(new ListViewItem[] { lista1 });
             listView.Columns.Add("ID", -2, HorizontalAlignment.Left);
             listView.Columns.Add("Nome", -2, HorizontalAlignment.Left);
             listView.Columns.Add("Descrição", -2, HorizontalAlignment.Left);
@@ -68,6 +64,8 @@ using System.IO;
             this.btnUpdate.Size = new Size(80, 30);
             this.btnUpdate.Click += new EventHandler(this.handleConfirmClickCategoriaAtualizar);
 
+            this.updateList();
+
             this.Controls.Add(listView);
 
             this.Controls.Add(this.btnCancel);
@@ -91,12 +89,25 @@ using System.IO;
         }
         private void handleConfirmClickCategoriaInserir(object sender, EventArgs e)
         {
-            InserirCategoria menu = new InserirCategoria();
+            InserirCategoria menu = new InserirCategoria(this);
             menu.Size = new Size(325, 300);
             menu.ShowDialog();
         }
         private void handleCancelClick(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public void updateList() {
+            IEnumerable<Categoria> categorias = CategoriaController.VisualizarCategoria();
+            this.listView.Items.Clear();
+            foreach(Categoria categoria in categorias)
+            {
+                ListViewItem item = new ListViewItem(categoria.Id.ToString());
+                item.SubItems.Add(categoria.Nome);
+                item.SubItems.Add(categoria.Descricao);
+
+                listView.Items.Add(item);
+            }
         }
 }

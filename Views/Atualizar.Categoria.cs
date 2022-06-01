@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;  
+using Controllers;
 
 
   public class AtualizarCategoria : Form //Atualizar Categoria
@@ -28,15 +29,17 @@ using System.IO;
 
             this.lblDescricao = new Label();
             this.lblDescricao.Text = "Descrição";
-            this.lblDescricao.Location = new Point(10, 110);
+            this.lblDescricao.Location = new Point(10, 75);
 
             this.txtNome = new TextBox();
-            this.txtNome.Location = new Point(10, 50);
+            this.txtNome.Location = new Point(10, 45);
             this.txtNome.Size = new Size(280, 30);
 
             this.txtDescricao = new TextBox();
-            this.txtDescricao.Location = new Point(10, 135);
+            this.txtDescricao.Location = new Point(10, 100);
             this.txtDescricao.Size = new Size(280, 30);
+
+  
 
             this.btnConfirm = new Button();
             this.btnConfirm.Text = "Confirmar";
@@ -55,8 +58,7 @@ using System.IO;
 
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtDescricao);
-
-
+ 
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnConfirm);
 
