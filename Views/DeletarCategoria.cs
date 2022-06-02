@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;  
-
+using Controllers;
 
    public class DeletarCategoria : Form //Deletar Dentista
     {
@@ -18,8 +18,10 @@ using System.IO;
         Button btnConfirm;
         Button btnCancel;
 
-        public DeletarCategoria()
+        public DeletarCategoria(int id)
         {
+            this.id = id;
+
             lblDeletar= new Label();
             lblDeletar.Text = $"Deseja realmente excluir esse item? (ID: {id})";
             lblDeletar.Size = new Size(200,40);
@@ -49,6 +51,7 @@ using System.IO;
 
         private void btnConfirmClick(object sender, EventArgs e)
         {
+            /*
             DialogResult result;
             result = MessageBox.Show(
                 $"Deseja inserir essa categoria?" +
@@ -68,6 +71,17 @@ using System.IO;
             else
             {
                 Console.WriteLine("Clicou não");
+            }
+            */
+            try 
+            {
+                CategoriaController.RemoverItem(this.id);
+
+                this.Close();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
             }
         }
 

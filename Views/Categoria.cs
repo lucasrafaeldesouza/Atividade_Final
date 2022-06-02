@@ -85,7 +85,8 @@ using Models;
         }
         private void handleConfirmClickCategoriaDeletar(object sender, EventArgs e)
         {
-            DeletarCategoria menu = new DeletarCategoria();
+            ListViewItem selectedItem = listView.SelectedItems[0];
+            DeletarCategoria menu = new DeletarCategoria(Convert.ToInt32(selectedItem.Text));
             menu.Size = new Size(222, 200);
             menu.ShowDialog();
         }
