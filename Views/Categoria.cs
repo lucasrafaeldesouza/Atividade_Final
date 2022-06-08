@@ -19,7 +19,7 @@ using Models;
         Button btnInsert;
         Button btnDeletar;
         Button btnUpdate;
-        ListView listView;
+        public ListView listView;
         public Categorias()
         {
             this.lblDentista = new Label();
@@ -77,11 +77,13 @@ using Models;
 
         private void handleConfirmClickCategoriaAtualizar(object sender, EventArgs e)
         {
-            //listView.SelectedItems[0].Text
-            //ListViewItem selectedItem = listView.SelectedItems[0];
-            AtualizarCategoria menu = new AtualizarCategoria();
-            menu.Size = new Size(325, 300);
-            menu.ShowDialog();
+            if (listView.SelectedItems.Count > 0) {
+                AtualizarCategoria menu = new AtualizarCategoria(this);
+                menu.Size = new Size(325, 300);
+                menu.ShowDialog();
+            } else {
+                MessageBox.Show("Não há itens selecionados.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void handleConfirmClickCategoriaDeletar(object sender, EventArgs e)
         {

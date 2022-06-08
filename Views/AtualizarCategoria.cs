@@ -14,16 +14,21 @@ using Controllers;
     {
         private System.ComponentModel.IContainer components = null;
 
+        Categorias formCategoria;
+        int id;
         Label lblNome;
         Label lblDescricao;
         TextBox txtNome;
         TextBox txtDescricao;
         Button btnConfirm;
         Button btnCancel;
-        ListView listView;
 
-        public AtualizarCategoria()
+        public AtualizarCategoria(Categorias formCategoria)
         {
+            int id = Convert.ToInt32(formCategoria.listView.SelectedItems[0].Text);
+            this.id = id;
+          
+            this.formCategoria = formCategoria;
             this.lblNome = new Label();
             this.lblNome.Text = "Nome";
             this.lblNome.Location = new Point(10, 20);
@@ -71,7 +76,17 @@ using Controllers;
         }
         private void handleConfirmClick(object sender, EventArgs e)
         {
-           ListViewItem selectedItem = listView.SelectedItems[0];
+          try 
+            {
+                CategoriaController.AlterarCategoria(this.id, this.txtNome.Text, this.txtDescricao.Text);
+
+                this.formCategoria.updateList();
+                this.Close();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
         private void handleCancelClick(object sender, EventArgs e)
         {
