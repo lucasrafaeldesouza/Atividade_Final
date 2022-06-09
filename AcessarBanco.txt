@@ -5,4 +5,4 @@ mysql -u root -p
 
 use encryptme;
 show tables;
-select * from coluna;
+select * from categoria;

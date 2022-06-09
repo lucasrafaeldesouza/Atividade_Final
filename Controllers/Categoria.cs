@@ -41,6 +41,8 @@ namespace Controllers
                 Descricao = Descricao;
             }
 
+            Categoria.AlterarCategoria(Id, Nome, Descricao);
+
             return categoria;
         }
 

@@ -103,6 +103,7 @@ using Models;
             this.Close();
         }
 
+
         public void updateList() {
             IEnumerable<Categoria> categorias = CategoriaController.VisualizarCategoria();
             this.listView.Items.Clear();
@@ -111,7 +112,6 @@ using Models;
                 ListViewItem item = new ListViewItem(categoria.Id.ToString());
                 item.SubItems.Add(categoria.Nome);
                 item.SubItems.Add(categoria.Descricao);
-
                 listView.Items.Add(item);
             }
         }
