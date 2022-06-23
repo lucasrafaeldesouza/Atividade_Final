@@ -9,17 +9,17 @@ using System.Threading;
 using System.IO;
 using Controllers;
 
-public class DeletarCategoria : Form
+public class DeletarUsuario : Form
 {
     private System.ComponentModel.IContainer components = null;
     int id;
     Label lblDeletar;
     Button btnConfirm;
     Button btnCancel;
-
-    public DeletarCategoria(int id)
+    public DeletarUsuario(int id)
     {
         this.id = id;
+
         lblDeletar = new Label();
         lblDeletar.Text = $"Deseja realmente excluir esse item? (ID: {id})";
         lblDeletar.Size = new Size(200, 40);
@@ -51,7 +51,7 @@ public class DeletarCategoria : Form
     {
         try
         {
-            CategoriaController.RemoverItem(this.id);
+            UsuarioController.RemoverUsuario(this.id);
             this.Close();
         }
         catch (Exception err)

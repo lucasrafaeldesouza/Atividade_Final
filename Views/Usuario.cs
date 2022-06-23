@@ -10,22 +10,22 @@ using System.IO;
 using Controllers;
 using Models;
 
-public class Categorias : Form
+public class Usuarios : Form
 {
     private System.ComponentModel.IContainer components = null;
-    Label lblDentista;
+    Label lblUsuario;
     Button btnCancel;
     Button btnInsert;
     Button btnDeletar;
     Button btnUpdate;
     public ListView listView;
-    public Categorias()
+    public Usuarios()
     {
-        this.lblDentista = new Label();
-        this.lblDentista.Text = "Categorias";
-        this.lblDentista.Location = new Point(220, 10);
+        this.lblUsuario = new Label();
+        this.lblUsuario.Text = "Usuarios";
+        this.lblUsuario.Location = new Point(220, 10);
 
-        this.Controls.Add(this.lblDentista);
+        this.Controls.Add(this.lblUsuario);
 
         listView = new ListView();
         listView.Location = new Point(50, 70);
@@ -33,7 +33,7 @@ public class Categorias : Form
         listView.View = View.Details;
         listView.Columns.Add("ID", -2, HorizontalAlignment.Left);
         listView.Columns.Add("Nome", -2, HorizontalAlignment.Left);
-        listView.Columns.Add("Descrição", -2, HorizontalAlignment.Left);
+        listView.Columns.Add("Senha", -2, HorizontalAlignment.Left);
         listView.FullRowSelect = true;
         listView.GridLines = true;
         listView.AllowColumnReorder = true;
@@ -49,19 +49,19 @@ public class Categorias : Form
         this.btnInsert.Text = "Inserir";
         this.btnInsert.Location = new Point(60, 500);
         this.btnInsert.Size = new Size(80, 30);
-        this.btnInsert.Click += new EventHandler(this.handleConfirmClickCategoriaInserir);
+        this.btnInsert.Click += new EventHandler(this.handleConfirmClickUsuarioInserir);
 
         this.btnDeletar = new Button();
         this.btnDeletar.Text = "Deletar";
         this.btnDeletar.Location = new Point(160, 500);
         this.btnDeletar.Size = new Size(80, 30);
-        this.btnDeletar.Click += new EventHandler(this.handleConfirmClickCategoriaDeletar);
+        this.btnDeletar.Click += new EventHandler(this.handleConfirmClickUsuarioDeletar);
 
         this.btnUpdate = new Button();
         this.btnUpdate.Text = "Atualizar";
         this.btnUpdate.Location = new Point(260, 500);
         this.btnUpdate.Size = new Size(80, 30);
-        this.btnUpdate.Click += new EventHandler(this.handleConfirmClickCategoriaAtualizar);
+        this.btnUpdate.Click += new EventHandler(this.handleConfirmClickUsuarioAtualizar);
 
         this.updateList();
 
@@ -74,11 +74,11 @@ public class Categorias : Form
         this.ClientSize = new System.Drawing.Size(500, 600);
     }
 
-    private void handleConfirmClickCategoriaAtualizar(object sender, EventArgs e)
+    private void handleConfirmClickUsuarioAtualizar(object sender, EventArgs e)
     {
         if (listView.SelectedItems.Count > 0)
         {
-            AtualizarCategoria menu = new AtualizarCategoria(this);
+            AtualizarUsuario menu = new AtualizarUsuario(this);
             menu.Size = new Size(325, 300);
             menu.ShowDialog();
         }
@@ -87,17 +87,17 @@ public class Categorias : Form
             MessageBox.Show("Não há itens selecionados.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
-    private void handleConfirmClickCategoriaDeletar(object sender, EventArgs e)
+    private void handleConfirmClickUsuarioInserir(object sender, EventArgs e)
     {
-        ListViewItem selectedItem = listView.SelectedItems[0];
-        DeletarCategoria menu = new DeletarCategoria(Convert.ToInt32(selectedItem.Text));
-        menu.Size = new Size(222, 200);
+        InserirUsuario menu = new InserirUsuario(this);
+        menu.Size = new Size(325, 300);
         menu.ShowDialog();
     }
-    private void handleConfirmClickCategoriaInserir(object sender, EventArgs e)
+    private void handleConfirmClickUsuarioDeletar(object sender, EventArgs e)
     {
-        InserirCategoria menu = new InserirCategoria(this);
-        menu.Size = new Size(325, 300);
+        ListViewItem selectedItem = listView.SelectedItems[0];
+        DeletarUsuario menu = new DeletarUsuario(Convert.ToInt32(selectedItem.Text));
+        menu.Size = new Size(222, 200);
         menu.ShowDialog();
     }
     private void handleCancelClick(object sender, EventArgs e)
@@ -106,13 +106,13 @@ public class Categorias : Form
     }
     public void updateList()
     {
-        IEnumerable<Categoria> categorias = CategoriaController.VisualizarCategoria();
+        IEnumerable<Usuario> usuarios = UsuarioController.VisualizarUsuario();
         this.listView.Items.Clear();
-        foreach (Categoria categoria in categorias)
+        foreach (Usuario usuario in usuarios)
         {
-            ListViewItem item = new ListViewItem(categoria.Id.ToString());
-            item.SubItems.Add(categoria.Nome);
-            item.SubItems.Add(categoria.Descricao);
+            ListViewItem item = new ListViewItem(usuario.Id.ToString());
+            item.SubItems.Add(usuario.Nome);
+            item.SubItems.Add(usuario.Senha);
             listView.Items.Add(item);
         }
     }

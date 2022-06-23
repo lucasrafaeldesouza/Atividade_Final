@@ -6,15 +6,15 @@ using System.Drawing;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading;
-using System.IO;  
+using System.IO;
 using Controllers;
 using Models;
 
 
-public class AtualizarCategoria : Form //Atualizar Categoria
+public class AtualizarCategoria : Form
 {
     private System.ComponentModel.IContainer components = null;
-    
+
     Label lblNome;
     Label lblDescricao;
     TextBox txtNome;
@@ -31,7 +31,7 @@ public class AtualizarCategoria : Form //Atualizar Categoria
         this.id = id;
         Categoria categoria = CategoriaController.GetCategoria(id);
 
-        
+
         this.lblNome = new Label();
         this.lblNome.Text = "Nome";
         this.lblNome.Location = new Point(10, 20);

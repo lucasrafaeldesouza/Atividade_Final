@@ -8,37 +8,33 @@ using System.Diagnostics;
 using System.Threading;
 using System.IO;
 using Controllers;
+using Models;
 
 
-public class InserirCategoria : Form
+public class AtualizarTag : Form
 {
     private System.ComponentModel.IContainer components = null;
-    Categorias formCategoria;
-    Label lblNome;
     Label lblDescricao;
-    TextBox txtNome;
     TextBox txtDescricao;
     Button btnConfirm;
     Button btnCancel;
+    Tags formTag;
+    int id;
 
-    public InserirCategoria(Categorias formCategoria)
+    public AtualizarTag(Tags formTag)
     {
-        this.formCategoria = formCategoria;
+        this.formTag = formTag;
+        int id = Convert.ToInt32(formTag.listView.SelectedItems[0].Text);
+        this.id = id;
+        Tag tag = TagController.GetTag(id);
 
-        this.lblNome = new Label();
-        this.lblNome.Text = "Nome";
-        this.lblNome.Location = new Point(10, 20);
 
         this.lblDescricao = new Label();
         this.lblDescricao.Text = "Descrição";
-        this.lblDescricao.Location = new Point(10, 110);
-
-        this.txtNome = new TextBox();
-        this.txtNome.Location = new Point(10, 50);
-        this.txtNome.Size = new Size(280, 30);
+        this.lblDescricao.Location = new Point(10, 75);
 
         this.txtDescricao = new TextBox();
-        this.txtDescricao.Location = new Point(10, 135);
+        this.txtDescricao.Location = new Point(10, 100);
         this.txtDescricao.Size = new Size(280, 30);
 
         this.btnConfirm = new Button();
@@ -53,26 +49,26 @@ public class InserirCategoria : Form
         this.btnCancel.Size = new Size(80, 30);
         this.btnCancel.Click += new EventHandler(this.handleCancelClick);
 
-        this.Controls.Add(this.lblNome);
         this.Controls.Add(this.lblDescricao);
-        this.Controls.Add(this.txtNome);
+
         this.Controls.Add(this.txtDescricao);
+
         this.Controls.Add(this.btnCancel);
         this.Controls.Add(this.btnConfirm);
 
         this.components = new System.ComponentModel.Container();
         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         this.ClientSize = new System.Drawing.Size(300, 300);
-        this.Text = "Inserir Categoria ";
+        this.Text = "Atualizar Tag ";
         this.StartPosition = FormStartPosition.CenterScreen;
     }
     private void handleConfirmClick(object sender, EventArgs e)
     {
         try
         {
-            CategoriaController.IncluirCategoria(this.txtNome.Text, this.txtDescricao.Text);
-
-            this.formCategoria.updateList();
+            TagController.AlterarTag(this.id, this.txtDescricao.Text);
+            MessageBox.Show("Tag atualizada com sucesso!", "Sucesso", MessageBoxButtons.OK);
+            this.formTag.updateList();
             this.Close();
         }
         catch (Exception err)

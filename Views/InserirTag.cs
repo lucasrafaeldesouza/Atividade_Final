@@ -10,32 +10,23 @@ using System.IO;
 using Controllers;
 
 
-public class InserirCategoria : Form
+public class InserirTag : Form
 {
     private System.ComponentModel.IContainer components = null;
-    Categorias formCategoria;
-    Label lblNome;
+    Tags formTag;
     Label lblDescricao;
-    TextBox txtNome;
     TextBox txtDescricao;
     Button btnConfirm;
     Button btnCancel;
 
-    public InserirCategoria(Categorias formCategoria)
+    public InserirTag(Tags formTag)
     {
-        this.formCategoria = formCategoria;
+        this.formTag = formTag;
 
-        this.lblNome = new Label();
-        this.lblNome.Text = "Nome";
-        this.lblNome.Location = new Point(10, 20);
 
         this.lblDescricao = new Label();
         this.lblDescricao.Text = "Descrição";
         this.lblDescricao.Location = new Point(10, 110);
-
-        this.txtNome = new TextBox();
-        this.txtNome.Location = new Point(10, 50);
-        this.txtNome.Size = new Size(280, 30);
 
         this.txtDescricao = new TextBox();
         this.txtDescricao.Location = new Point(10, 135);
@@ -53,10 +44,11 @@ public class InserirCategoria : Form
         this.btnCancel.Size = new Size(80, 30);
         this.btnCancel.Click += new EventHandler(this.handleCancelClick);
 
-        this.Controls.Add(this.lblNome);
+
         this.Controls.Add(this.lblDescricao);
-        this.Controls.Add(this.txtNome);
+
         this.Controls.Add(this.txtDescricao);
+
         this.Controls.Add(this.btnCancel);
         this.Controls.Add(this.btnConfirm);
 
@@ -70,9 +62,9 @@ public class InserirCategoria : Form
     {
         try
         {
-            CategoriaController.IncluirCategoria(this.txtNome.Text, this.txtDescricao.Text);
+            TagController.IncluirTag(this.txtDescricao.Text);
 
-            this.formCategoria.updateList();
+            this.formTag.updateList();
             this.Close();
         }
         catch (Exception err)

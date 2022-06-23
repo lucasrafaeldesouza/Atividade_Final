@@ -13,19 +13,24 @@ namespace Controllers
             string Senha
         )
         {
-            if(String.IsNullOrEmpty(Nome))
+            if (String.IsNullOrEmpty(Nome))
             {
                 throw new Exception("Nome inválido");
             }
 
-            if(String.IsNullOrEmpty(Email))
+            if (String.IsNullOrEmpty(Email))
             {
                 throw new Exception("Email inválido");
             }
 
-            if(String.IsNullOrEmpty(Senha))
+            if (String.IsNullOrEmpty(Senha))
             {
                 throw new Exception("Senha inválida");
+            }
+
+            else
+            {
+                Senha = BCrypt.Net.BCrypt.HashPassword(Senha);
             }
 
             return new Usuario(Nome, Email, Senha);
@@ -40,20 +45,23 @@ namespace Controllers
         {
             Usuario usuario = GetUsuario(Id);
 
-            if(!String.IsNullOrEmpty(Nome))
+            if (!String.IsNullOrEmpty(Nome))
             {
                 Nome = Nome;
             }
 
-            if(!String.IsNullOrEmpty(Email))
+            if (!String.IsNullOrEmpty(Email))
             {
                 Email = Email;
             }
 
-            if(!String.IsNullOrEmpty(Senha))
+            if (!String.IsNullOrEmpty(Senha) && !BCrypt.Net.BCrypt.Equals(Senha, usuario.Senha))
             {
-                Senha = Senha;
+                Senha = usuario.Senha;
+                Senha = BCrypt.Net.BCrypt.HashPassword(Senha);
             }
+
+            Usuario.AlterarUsuario(Id, Nome, Email, Senha);
 
             return usuario;
         }
@@ -73,11 +81,11 @@ namespace Controllers
         {
             Usuario usuario = (
                 from Usuario in Usuario.GetUsuarios()
-                    where Usuario.Id == Id
-                    select Usuario
+                where Usuario.Id == Id
+                select Usuario
             ).First();
 
-            if(usuario == null)
+            if (usuario == null)
             {
                 throw new Exception("Usuário não encontrado");
             }

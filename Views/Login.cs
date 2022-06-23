@@ -135,6 +135,7 @@ public class Home : Form //Tela de Home
         this.btnTags.Text = "Tags";
         this.btnTags.Location = new Point(160, 60);
         this.btnTags.Size = new Size(100, 30);
+        this.btnTags.Click += new EventHandler(this.handleTagsClick);
 
         this.btnSenhas = new Button();
         this.btnSenhas.Text = "Senhas";
@@ -165,7 +166,8 @@ public class Home : Form //Tela de Home
     }
     private void handleTagsClick(object sender, EventArgs e)
     {
-
+        Tags menu = new Tags();
+        menu.ShowDialog();
     }
     private void handleCategoriaClick(object sender, EventArgs e)
     {
@@ -178,7 +180,8 @@ public class Home : Form //Tela de Home
     }
     private void handleUsuarioClick(object sender, EventArgs e)
     {
-
+         Usuarios menu = new Usuarios();
+         menu.ShowDialog();
     }
     private void handleCancelClick(object sender, EventArgs e)
     {

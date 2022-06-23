@@ -11,7 +11,7 @@ namespace Controllers
             string Descricao
         )
         {
-            if(String.IsNullOrEmpty(Descricao))
+            if (String.IsNullOrEmpty(Descricao))
             {
                 throw new Exception("Descrição inválida");
             }
@@ -26,12 +26,16 @@ namespace Controllers
         {
             Tag tag = GetTag(Id);
 
-            if(!String.IsNullOrEmpty(Descricao))
+            if (!String.IsNullOrEmpty(Descricao))
             {
                 Descricao = Descricao;
             }
 
+            Tag.AlterarTag(Id, Descricao);
+
             return tag;
+
+
         }
 
         public static Tag RemoverTag(
@@ -49,11 +53,11 @@ namespace Controllers
         {
             Tag tag = (
                 from Tag in Tag.GetTags()
-                    where Tag.Id == Id
-                    select Tag
+                where Tag.Id == Id
+                select Tag
             ).First();
 
-            if(tag == null)
+            if (tag == null)
             {
                 throw new Exception("Tag não encontrada");
             }
@@ -63,7 +67,7 @@ namespace Controllers
 
         public static IEnumerable<Tag> VisualizarTag()
         {
-            return Tag.GetTags();   
+            return Tag.GetTags();
         }
     }
 }

@@ -8,38 +8,54 @@ using System.Diagnostics;
 using System.Threading;
 using System.IO;
 using Controllers;
+using Models;
 
 
-public class InserirCategoria : Form
+public class AtualizarUsuario : Form
 {
     private System.ComponentModel.IContainer components = null;
-    Categorias formCategoria;
     Label lblNome;
-    Label lblDescricao;
+    Label lblEmail;
+    Label lblSenha;
     TextBox txtNome;
-    TextBox txtDescricao;
+    TextBox txtEmail;
+    TextBox txtSenha;
     Button btnConfirm;
     Button btnCancel;
+    Usuarios formUsuario;
+    int id;
 
-    public InserirCategoria(Categorias formCategoria)
+    public AtualizarUsuario(Usuarios formUsuario)
     {
-        this.formCategoria = formCategoria;
+        this.formUsuario = formUsuario;
+        int id = Convert.ToInt32(formUsuario.listView.SelectedItems[0].Text);
+        this.id = id;
+        Usuario usuario = UsuarioController.GetUsuario(id);
+
 
         this.lblNome = new Label();
         this.lblNome.Text = "Nome";
         this.lblNome.Location = new Point(10, 20);
 
-        this.lblDescricao = new Label();
-        this.lblDescricao.Text = "Descrição";
-        this.lblDescricao.Location = new Point(10, 110);
+        this.lblEmail = new Label();
+        this.lblEmail.Text = "Email";
+        this.lblEmail.Location = new Point(10, 75);
+
+        this.lblSenha = new Label();
+        this.lblSenha.Text = "Senha";
+        this.lblSenha.Location = new Point(10, 125);
 
         this.txtNome = new TextBox();
-        this.txtNome.Location = new Point(10, 50);
+        this.txtNome.Location = new Point(10, 45);
         this.txtNome.Size = new Size(280, 30);
 
-        this.txtDescricao = new TextBox();
-        this.txtDescricao.Location = new Point(10, 135);
-        this.txtDescricao.Size = new Size(280, 30);
+        this.txtEmail = new TextBox();
+        this.txtEmail.Location = new Point(10, 100);
+        this.txtEmail.Size = new Size(280, 30);
+
+        this.txtSenha = new TextBox();
+        this.txtSenha.Location = new Point(10, 155);
+        this.txtSenha.Size = new Size(280, 30);
 
         this.btnConfirm = new Button();
         this.btnConfirm.Text = "Confirmar";
@@ -54,25 +70,29 @@ public class InserirCategoria : Form
         this.btnCancel.Click += new EventHandler(this.handleCancelClick);
 
         this.Controls.Add(this.lblNome);
-        this.Controls.Add(this.lblDescricao);
+        this.Controls.Add(this.lblEmail);
+        this.Controls.Add(this.lblSenha);
+
         this.Controls.Add(this.txtNome);
-        this.Controls.Add(this.txtDescricao);
+        this.Controls.Add(this.txtEmail);
+        this.Controls.Add(this.txtSenha);
+
         this.Controls.Add(this.btnCancel);
         this.Controls.Add(this.btnConfirm);
 
         this.components = new System.ComponentModel.Container();
         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         this.ClientSize = new System.Drawing.Size(300, 300);
-        this.Text = "Inserir Categoria ";
+        this.Text = "Atualizar Categoria ";
         this.StartPosition = FormStartPosition.CenterScreen;
     }
     private void handleConfirmClick(object sender, EventArgs e)
     {
         try
         {
-            CategoriaController.IncluirCategoria(this.txtNome.Text, this.txtDescricao.Text);
-
-            this.formCategoria.updateList();
+            UsuarioController.AlterarUsuario(this.id, this.txtNome.Text, this.txtEmail.Text, this.txtSenha.Text);
+            MessageBox.Show("Categoria cadastrada com sucesso!", "Sucesso", MessageBoxButtons.OK);
+            this.formUsuario.updateList();
             this.Close();
         }
         catch (Exception err)

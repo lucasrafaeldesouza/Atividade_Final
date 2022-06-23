@@ -10,69 +10,83 @@ using System.IO;
 using Controllers;
 
 
-public class InserirCategoria : Form
+public class InserirUsuario : Form
 {
     private System.ComponentModel.IContainer components = null;
-    Categorias formCategoria;
+    Usuarios formUsuario;
     Label lblNome;
-    Label lblDescricao;
+    Label lblEmail;
+    Label lblSenha;
     TextBox txtNome;
-    TextBox txtDescricao;
+    TextBox txtEmail;
+    TextBox txtSenha;
     Button btnConfirm;
     Button btnCancel;
 
-    public InserirCategoria(Categorias formCategoria)
+    public InserirUsuario(Usuarios formUsuario)
     {
-        this.formCategoria = formCategoria;
+        this.formUsuario = formUsuario;
 
         this.lblNome = new Label();
         this.lblNome.Text = "Nome";
         this.lblNome.Location = new Point(10, 20);
 
-        this.lblDescricao = new Label();
-        this.lblDescricao.Text = "Descrição";
-        this.lblDescricao.Location = new Point(10, 110);
+        this.lblEmail = new Label();
+        this.lblEmail.Text = "Email";
+        this.lblEmail.Location = new Point(10, 90);
+
+        this.lblSenha = new Label();
+        this.lblSenha.Text = "Senha";
+        this.lblSenha.Location = new Point(10, 150);
 
         this.txtNome = new TextBox();
         this.txtNome.Location = new Point(10, 50);
         this.txtNome.Size = new Size(280, 30);
 
-        this.txtDescricao = new TextBox();
-        this.txtDescricao.Location = new Point(10, 135);
-        this.txtDescricao.Size = new Size(280, 30);
+        this.txtEmail = new TextBox();
+        this.txtEmail.Location = new Point(10, 115);
+        this.txtEmail.Size = new Size(280, 30);
+
+        this.txtSenha = new TextBox();
+        this.txtSenha.Location = new Point(10, 180);
+        this.txtSenha.Size = new Size(280, 30);
 
         this.btnConfirm = new Button();
         this.btnConfirm.Text = "Confirmar";
-        this.btnConfirm.Location = new Point(60, 200);
+        this.btnConfirm.Location = new Point(60, 215);
         this.btnConfirm.Size = new Size(80, 30);
         this.btnConfirm.Click += new EventHandler(this.handleConfirmClick);
 
         this.btnCancel = new Button();
         this.btnCancel.Text = "Cancelar";
-        this.btnCancel.Location = new Point(160, 200);
+        this.btnCancel.Location = new Point(160, 215);
         this.btnCancel.Size = new Size(80, 30);
         this.btnCancel.Click += new EventHandler(this.handleCancelClick);
 
         this.Controls.Add(this.lblNome);
-        this.Controls.Add(this.lblDescricao);
+        this.Controls.Add(this.lblEmail);
+        this.Controls.Add(this.lblSenha);
+
         this.Controls.Add(this.txtNome);
-        this.Controls.Add(this.txtDescricao);
+        this.Controls.Add(this.txtEmail);
+        this.Controls.Add(this.txtSenha);
+
         this.Controls.Add(this.btnCancel);
         this.Controls.Add(this.btnConfirm);
 
         this.components = new System.ComponentModel.Container();
         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         this.ClientSize = new System.Drawing.Size(300, 300);
-        this.Text = "Inserir Categoria ";
+        this.Text = "Inserir Usuario ";
         this.StartPosition = FormStartPosition.CenterScreen;
     }
     private void handleConfirmClick(object sender, EventArgs e)
     {
         try
         {
-            CategoriaController.IncluirCategoria(this.txtNome.Text, this.txtDescricao.Text);
+            UsuarioController.IncluirUsuario(this.txtNome.Text, this.txtEmail.Text, this.txtSenha.Text);
 
-            this.formCategoria.updateList();
+            this.formUsuario.updateList();
             this.Close();
         }
         catch (Exception err)
