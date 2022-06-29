@@ -66,11 +66,9 @@ public class InserirUsuario : Form
         this.Controls.Add(this.lblNome);
         this.Controls.Add(this.lblEmail);
         this.Controls.Add(this.lblSenha);
-
         this.Controls.Add(this.txtNome);
         this.Controls.Add(this.txtEmail);
         this.Controls.Add(this.txtSenha);
-
         this.Controls.Add(this.btnCancel);
         this.Controls.Add(this.btnConfirm);
 
@@ -85,7 +83,6 @@ public class InserirUsuario : Form
         try
         {
             UsuarioController.IncluirUsuario(this.txtNome.Text, this.txtEmail.Text, this.txtSenha.Text);
-
             this.formUsuario.updateList();
             this.Close();
         }

@@ -87,6 +87,7 @@ public class Login : Form //Tela de Login
     private void handleConfirmClick(object sender, EventArgs e)
     {
 
+        
         if (this.txtUser.Text == "teste" && this.txtPass.Text == "123")
         {
             Home form = new Home();
@@ -97,8 +98,8 @@ public class Login : Form //Tela de Login
         {
             //Tags form = new Tags();
             //form.Show();
-
         }
+        
     }
 
     private void handleCancelClick(object sender, EventArgs e)

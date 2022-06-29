@@ -9,8 +9,6 @@ using System.Threading;
 using System.IO;
 using Controllers;
 using Models;
-
-
 public class AtualizarCategoria : Form
 {
     private System.ComponentModel.IContainer components = null;

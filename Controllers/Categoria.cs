@@ -12,11 +12,11 @@ namespace Controllers
             string Descricao
         )
         {
-            if(String.IsNullOrEmpty(Nome))
+            if (String.IsNullOrEmpty(Nome))
             {
                 throw new Exception("Nome inválido");
             }
-            if(String.IsNullOrEmpty(Descricao))
+            if (String.IsNullOrEmpty(Descricao))
             {
                 throw new Exception("Descrição inválida");
             }
@@ -32,13 +32,13 @@ namespace Controllers
         {
             Categoria categoria = GetCategoria(Id);
 
-            if(!String.IsNullOrEmpty(Nome))
+            if (!String.IsNullOrEmpty(Nome))
             {
-                Nome = Nome;
+
             }
-            if(!String.IsNullOrEmpty(Descricao))
+            if (!String.IsNullOrEmpty(Descricao))
             {
-                Descricao = Descricao;
+
             }
 
             Categoria.AlterarCategoria(Id, Nome, Descricao);
@@ -61,11 +61,11 @@ namespace Controllers
         {
             Categoria categoria = (
                 from Categoria in Categoria.GetCategorias()
-                    where Categoria.Id == Id
-                    select Categoria
+                where Categoria.Id == Id
+                select Categoria
             ).First();
 
-            if(categoria == null)
+            if (categoria == null)
             {
                 throw new Exception("Categoria não encontrada");
             }

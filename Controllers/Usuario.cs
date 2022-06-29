@@ -28,6 +28,13 @@ namespace Controllers
                 throw new Exception("Senha inválida");
             }
 
+            int minChar = 8;
+            bool invalidPass = Senha.Length < minChar;
+            if (invalidPass)
+            {
+                throw new Exception("A senha deve possuir no mínimo 8 caracteres.");
+            }
+
             else
             {
                 Senha = BCrypt.Net.BCrypt.HashPassword(Senha);
@@ -47,12 +54,12 @@ namespace Controllers
 
             if (!String.IsNullOrEmpty(Nome))
             {
-                Nome = Nome;
+
             }
 
             if (!String.IsNullOrEmpty(Email))
             {
-                Email = Email;
+
             }
 
             if (!String.IsNullOrEmpty(Senha) && !BCrypt.Net.BCrypt.Equals(Senha, usuario.Senha))

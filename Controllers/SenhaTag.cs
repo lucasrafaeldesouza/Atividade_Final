@@ -30,18 +30,19 @@ namespace Controllers
         {
             SenhaTag senhaTag = (
                 from SenhaTag in SenhaTag.GetSenhaTags()
-                    where SenhaTag.Id == Id
-                    select SenhaTag
+                where SenhaTag.Id == Id
+                select SenhaTag
             ).First();
 
-            if(senhaTag == null)
+            if (senhaTag == null)
             {
                 throw new Exception("Senha Tag não encontrada");
             }
 
             return senhaTag;
 
-        }public static IEnumerable<SenhaTag> VisualizarSenhaTag()
+        }
+        public static IEnumerable<SenhaTag> VisualizarSenhaTag()
         {
             return SenhaTag.GetSenhaTags();
         }

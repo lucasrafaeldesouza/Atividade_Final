@@ -9,7 +9,6 @@ using System.Threading;
 using System.IO;
 using Controllers;
 using Models;
-
 public class Usuarios : Form
 {
     private System.ComponentModel.IContainer components = null;
@@ -66,7 +65,6 @@ public class Usuarios : Form
         this.updateList();
 
         this.Controls.Add(listView);
-
         this.Controls.Add(this.btnCancel);
         this.Controls.Add(this.btnInsert);
         this.Controls.Add(this.btnDeletar);

@@ -46,7 +46,6 @@ public class DeletarCategoria : Form
         this.ClientSize = new System.Drawing.Size(170, 140);
         this.StartPosition = FormStartPosition.CenterScreen;
     }
-
     private void btnConfirmClick(object sender, EventArgs e)
     {
         try

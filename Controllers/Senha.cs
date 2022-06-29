@@ -16,23 +16,23 @@ namespace Controllers
             string Procedimento
         )
         {
-            if(String.IsNullOrEmpty(Nome))
+            if (String.IsNullOrEmpty(Nome))
             {
                 throw new Exception("Nome inválido");
             }
-            if(String.IsNullOrEmpty(Url))
+            if (String.IsNullOrEmpty(Url))
             {
                 throw new Exception("Url inválido");
             }
-            if(String.IsNullOrEmpty(Usuario))
+            if (String.IsNullOrEmpty(Usuario))
             {
                 throw new Exception("Url inválido");
             }
-            if(String.IsNullOrEmpty(SenhaEncrypt))
+            if (String.IsNullOrEmpty(SenhaEncrypt))
             {
                 throw new Exception("Url inválido");
             }
-            if(String.IsNullOrEmpty(Procedimento))
+            if (String.IsNullOrEmpty(Procedimento))
             {
                 throw new Exception("Url inválido");
             }
@@ -52,25 +52,25 @@ namespace Controllers
         {
             Senha senha = GetSenha(Id);
 
-            if(!String.IsNullOrEmpty(Nome))
+            if (!String.IsNullOrEmpty(Nome))
             {
-                Nome = Nome;
+
             }
-            if(!String.IsNullOrEmpty(Nome))
+            if (!String.IsNullOrEmpty(Nome))
             {
-                Url = Url;
+
             }
-            if(!String.IsNullOrEmpty(Nome))
+            if (!String.IsNullOrEmpty(Nome))
             {
-                Usuario = Usuario;
+
             }
-            if(!String.IsNullOrEmpty(Nome))
+            if (!String.IsNullOrEmpty(Nome))
             {
-                SenhaEncrypt = SenhaEncrypt;
+
             }
-            if(!String.IsNullOrEmpty(Nome))
+            if (!String.IsNullOrEmpty(Nome))
             {
-                Procedimento = Procedimento;
+
             }
 
             return senha;
@@ -91,11 +91,11 @@ namespace Controllers
         {
             Senha senha = (
                 from Senha in Senha.GetSenhas()
-                    where Senha.Id == Id
-                    select Senha
+                where Senha.Id == Id
+                select Senha
             ).First();
 
-            if(senha == null)
+            if (senha == null)
             {
                 throw new Exception("Senha não encontrada");
             }

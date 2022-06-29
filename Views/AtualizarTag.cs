@@ -9,8 +9,6 @@ using System.Threading;
 using System.IO;
 using Controllers;
 using Models;
-
-
 public class AtualizarTag : Form
 {
     private System.ComponentModel.IContainer components = null;
@@ -50,9 +48,7 @@ public class AtualizarTag : Form
         this.btnCancel.Click += new EventHandler(this.handleCancelClick);
 
         this.Controls.Add(this.lblDescricao);
-
         this.Controls.Add(this.txtDescricao);
-
         this.Controls.Add(this.btnCancel);
         this.Controls.Add(this.btnConfirm);
 

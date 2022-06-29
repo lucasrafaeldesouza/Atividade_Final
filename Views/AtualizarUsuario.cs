@@ -32,7 +32,6 @@ public class AtualizarUsuario : Form
         this.id = id;
         Usuario usuario = UsuarioController.GetUsuario(id);
 
-
         this.lblNome = new Label();
         this.lblNome.Text = "Nome";
         this.lblNome.Location = new Point(10, 20);
@@ -72,11 +71,9 @@ public class AtualizarUsuario : Form
         this.Controls.Add(this.lblNome);
         this.Controls.Add(this.lblEmail);
         this.Controls.Add(this.lblSenha);
-
         this.Controls.Add(this.txtNome);
         this.Controls.Add(this.txtEmail);
         this.Controls.Add(this.txtSenha);
-
         this.Controls.Add(this.btnCancel);
         this.Controls.Add(this.btnConfirm);
 

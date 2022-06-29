@@ -23,7 +23,6 @@ public class InserirTag : Form
     {
         this.formTag = formTag;
 
-
         this.lblDescricao = new Label();
         this.lblDescricao.Text = "Descrição";
         this.lblDescricao.Location = new Point(10, 110);
@@ -46,9 +45,7 @@ public class InserirTag : Form
 
 
         this.Controls.Add(this.lblDescricao);
-
         this.Controls.Add(this.txtDescricao);
-
         this.Controls.Add(this.btnCancel);
         this.Controls.Add(this.btnConfirm);
 

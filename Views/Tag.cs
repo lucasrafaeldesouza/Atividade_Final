@@ -9,7 +9,6 @@ using System.Threading;
 using System.IO;
 using Controllers;
 using Models;
-
 public class Tags : Form
 {
     private System.ComponentModel.IContainer components = null;
@@ -64,15 +63,12 @@ public class Tags : Form
         this.updateList();
 
         this.Controls.Add(listView);
-
         this.Controls.Add(this.btnCancel);
         this.Controls.Add(this.btnInsert);
         this.Controls.Add(this.btnDeletar);
         this.Controls.Add(this.btnUpdate);
         this.ClientSize = new System.Drawing.Size(500, 600);
     }
-
-
     private void handleConfirmClickTagAtualizar(object sender, EventArgs e)
     {
         if (listView.SelectedItems.Count > 0)

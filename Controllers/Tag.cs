@@ -28,7 +28,7 @@ namespace Controllers
 
             if (!String.IsNullOrEmpty(Descricao))
             {
-                Descricao = Descricao;
+
             }
 
             Tag.AlterarTag(Id, Descricao);

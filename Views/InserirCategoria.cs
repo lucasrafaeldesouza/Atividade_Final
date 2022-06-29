@@ -8,8 +8,6 @@ using System.Diagnostics;
 using System.Threading;
 using System.IO;
 using Controllers;
-
-
 public class InserirCategoria : Form
 {
     private System.ComponentModel.IContainer components = null;
@@ -71,7 +69,6 @@ public class InserirCategoria : Form
         try
         {
             CategoriaController.IncluirCategoria(this.txtNome.Text, this.txtDescricao.Text);
-
             this.formCategoria.updateList();
             this.Close();
         }
