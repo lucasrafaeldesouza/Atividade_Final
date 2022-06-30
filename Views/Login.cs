@@ -122,7 +122,7 @@ public class Home : Form //Tela de Home
     public Home()
     {
         this.lblLogin = new Label();
-        this.lblLogin.Text = "Olá Teste";
+        this.lblLogin.Text = "Olá Usuario";
         this.lblLogin.Location = new Point(117, 20);
 
         this.btnCategorias = new Button();
@@ -138,15 +138,9 @@ public class Home : Form //Tela de Home
         this.btnTags.Size = new Size(100, 30);
         this.btnTags.Click += new EventHandler(this.handleTagsClick);
 
-        this.btnSenhas = new Button();
-        this.btnSenhas.Text = "Senhas";
-        this.btnSenhas.Location = new Point(40, 100);
-        this.btnSenhas.Size = new Size(100, 30);
-        this.btnSenhas.Click += new EventHandler(this.handleSenhasClick);
-
         this.btnUsuario = new Button();
         this.btnUsuario.Text = "Usuario";
-        this.btnUsuario.Location = new Point(160, 100);
+        this.btnUsuario.Location = new Point(100, 100);
         this.btnUsuario.Size = new Size(100, 30);
         this.btnUsuario.Click += new EventHandler(this.handleUsuarioClick);
 
@@ -174,10 +168,6 @@ public class Home : Form //Tela de Home
     {
         Categorias menu = new Categorias();
         menu.ShowDialog();
-    }
-    private void handleSenhasClick(object sender, EventArgs e)
-    {
-
     }
     private void handleUsuarioClick(object sender, EventArgs e)
     {
